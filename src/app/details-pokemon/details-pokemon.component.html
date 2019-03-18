@@ -1,0 +1,47 @@
+<div class="modal fade" id="showPokemon">
+  <div class="modal-dialog">
+      <div class="modal-content">
+        <button data-dismiss="modal">X</button>
+        <div class="row details">
+          <div class="col-md-4 image text-center">
+            <img [src]="selectPokemon.imageUrlHiRes" 
+                [defaultImage]="spinner" 
+                [lazyLoad]="selectPokemon.imageUrlHiRes" 
+                [offset]="offset" 
+                [alt]="selectPokemon.name">
+          </div>
+          <div class="col-lg-8 col-sm-12">
+            <div class="row">
+              <div class="col-sm-6">
+                <h4>name: {{ selectPokemon.name }}</h4>
+                <h4>super type: {{ selectPokemon.supertype }}</h4>
+                <h4>Id: {{ selectPokemon.id }}</h4>
+                <h4>Series: {{selectPokemon.series}}</h4>
+                <h4>types: {{ selectPokemon.types }}</h4>
+                <h4>National pokedex number: {{ selectPokemon.nationalPokedexNumber }}</h4>
+              </div>
+              <div class="col-sm-6">
+                <h4>rarity: {{ selectPokemon.rarity }}</h4>
+                <h4>hp: {{ selectPokemon.hp }}</h4>
+                <h4>set: {{ selectPokemon.set }}</h4>
+                <h4>weakness: {{ selectPokemon.weaknessPokemon }}</h4>
+                <h4>attacks: {{ selectPokemon.attacksPokemon }}</h4>
+                <h4 *ngIf="selectPokemon.evolvesFrom">evolvesFrom: {{ selectPokemon.evolvesFrom }}</h4>
+              </div>
+            </div>
+            <h3 class="titleDetails">DETAILS</h3>
+            <div *ngFor="let attack of selectPokemon.attacks">
+              <h4>{{attack.name}}</h4>
+              <p>{{attack.text}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="thumbnails">
+          <h2>SIMILAR POKEMONS</h2>
+          <app-pokemons [pokemons]="similarPokemons" 
+                        (selectedPokemon)="select($event)">
+          </app-pokemons>
+        </div>
+      </div>
+    </div>
+  </div>

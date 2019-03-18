@@ -1,0 +1,14 @@
+<div  class="row">
+  <h1 class="title"> {{ title }} </h1>
+</div>
+<div class="main-panel">
+  <app-pokemons [pokemons]="pokemons" 
+                (selectedPokemon)="openDetails($event)" 
+                [target]="'showPokemon'">
+  </app-pokemons>
+</div>
+
+<app-details-pokemon [selectPokemon]="selectPokemon"
+                     [similarPokemons]="similarPokemons"
+                     *ngIf="see">
+</app-details-pokemon>
